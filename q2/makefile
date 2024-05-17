@@ -1,16 +1,16 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
-LIBS = -lm
+LDFLAGS = -lm
 
 .PHONY: all clean
 
 all: poisson
 
 poisson: poisson.o
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-poisson.o: poisson.c
+poisson.o: poisson.c 
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) poisson.o poisson
+	rm -f poisson *.o
